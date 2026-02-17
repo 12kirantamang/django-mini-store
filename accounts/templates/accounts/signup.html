@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            /* Gradient background matching your image */
+            background: linear-gradient(135deg, #4e65d1 0%, #904e95 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .register-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h2 { border-bottom: 1px solid #eee; padding-bottom: 20px; margin-top: 0; }
+        .input-group { margin: 25px 0; border-bottom: 2px solid #ccc; }
+        input {
+            width: 100%;
+            border: none;
+            padding: 10px 0;
+            outline: none;
+            font-size: 16px;
+            color: #333;
+        }
+        ::placeholder { color: #aaa; }
+        .signup-btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 30px;
+            border: 2px solid #333;
+            background: #eee;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .signup-btn:hover {
+            background: #ddd;
+        }
+        .footer-link { margin-top: 20px; font-size: 14px; color: #666; }
+        .footer-link a { color: #4e65d1; text-decoration: none; }
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .alert-error {
+            background-color: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+        .alert-success {
+            background-color: #efe;
+            color: #3c3;
+            border: 1px solid #cfc;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-card">
+        <h2>Register</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- ADD THIS: Hidden input for redirect after signup -->
+            <input type="hidden" name="next" value="{{ request.GET.next|default:'' }}">
+            
+            <div class="input-group"><input type="text" name="username" placeholder="Username" required></div>
+            <div class="input-group"><input type="email" name="email" placeholder="Email" required></div>
+            <div class="input-group"><input type="password" name="password" placeholder="Password" required></div>
+            <div class="input-group"><input type="password" name="confirm_password" placeholder="Confirm Password" required></div>
+            
+            <button type="submit" class="signup-btn">Sign Up</button>
+        </form>
+        
+        <!-- UPDATE THIS: Pass next parameter to login link -->
+        <p class="footer-link">Have an Account? 
+            <a href="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">Login Here</a>
+        </p>
+    </div>
+</body>
+</html>

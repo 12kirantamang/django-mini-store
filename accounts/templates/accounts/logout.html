@@ -1,0 +1,58 @@
+<!-- accounts/logout_confirm.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Logout</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #4e65d1 0%, #904e95 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .logout-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 400px;
+        }
+        h2 { color: #333; margin-bottom: 20px; }
+        p { color: #666; margin-bottom: 30px; }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #4e65d1;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover { background: #3d4fa0; }
+        .btn-secondary { background: #666; }
+        .btn-secondary:hover { background: #555; }
+    </style>
+</head>
+<body>
+    <div class="logout-card">
+        <h2>Confirm Logout</h2>
+        <p>Are you sure you want to log out of MiniStore?</p>
+        
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn">Yes, Log Out</button>
+        </form>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+</body>
+</html>

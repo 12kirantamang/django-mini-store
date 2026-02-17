@@ -1,0 +1,62 @@
+{% extends "products/base.html" %}
+{% load static %}
+{% block content %}
+<section id="confirmation" class="padding-large">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        
+        <div class="alert alert-success py-5">
+          <h2 class="display-6 mb-3">🎉 Thank You!</h2>
+          <p class="lead">Your order has been placed successfully.</p>
+          <hr>
+          <p class="mb-0">Order Number: <strong>#{{ order.id }}</strong></p>
+        </div>
+        
+        <div class="card mt-4 text-start">
+          <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">Order Details</h4>
+          </div>
+          <div class="card-body">
+            <table class="table table-borderless">
+              <tr>
+                <td width="30%"><strong>Name:</strong></td>
+                <td>{{ order.full_name }}</td>
+              </tr>
+              <tr>
+                <td><strong>Email:</strong></td>
+                <td>{{ order.email }}</td>
+              </tr>
+              <tr>
+                <td><strong>Phone:</strong></td>
+                <td>{{ order.phone }}</td>
+              </tr>
+              <tr>
+                <td><strong>Address:</strong></td>
+                <td>{{ order.address }}, {{ order.city }}, {{ order.postal_code }}, {{ order.country }}</td>
+              </tr>
+              <tr>
+                <td><strong>Total:</strong></td>
+                <td class="text-primary"><strong>${{ order.total_amount }}</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Status:</strong></td>
+                <td><span class="badge bg-warning">{{ order.get_status_display }}</span></td>
+              </tr>
+              <tr>
+                <td><strong>Date:</strong></td>
+                <td>{{ order.created_at|date:"F d, Y H:i" }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="mt-4">
+          <a href="{% url 'home' %}" class="btn btn-medium btn-dark">Continue Shopping</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
