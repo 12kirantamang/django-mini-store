@@ -20,7 +20,7 @@ http://localhost:8000/
 ---
 
 ## 🖼️ Screenshots
-(Add screenshots here)
+screenshot.png
 - Home Page  
 - Product List  
 - Cart Page  
