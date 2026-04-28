@@ -54,7 +54,7 @@ screenshot.png
 ---
 
 ## 🗄️ Database Design (ER Diagram)
-(Add ER diagram image here)
+
 
 Example Entities:
 - User  
