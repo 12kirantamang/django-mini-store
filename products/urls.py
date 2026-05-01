@@ -13,4 +13,6 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
     path('checkout/process/', views.process_checkout, name='process_checkout'),
     path('order/confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
+    # In products/urls.py
+    path('order/success/<int:order_id>/', views.payment_success, name='payment_success'),
 ]

@@ -30,17 +30,6 @@ def signup(request):
             password=password
         )
         
-        # AUTO-LOGIN after signup
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, f"Welcome {username}!")
-            
-            # Redirect to checkout or home
-            next_url = request.POST.get('next')
-            if next_url:
-                return redirect(next_url)
-            return redirect('home')
         
         return redirect('login')
     
