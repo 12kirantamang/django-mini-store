@@ -1,12 +1,24 @@
+# products/models.py
+
 from django.db import models
 from django.contrib.auth.models import User
 
 
 class Product(models.Model):
+    CATEGORY_CHOICES = [
+        # ('mobile', 'Mobile Phone'),
+        # ('watch', 'Smart Watch'),
+        # ('laptop', 'Laptop'),
+        # ('tablet', 'Tablet'),
+        ('accessory', 'Accessory'),
+    ]
+    
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='mobile')
+    stock = models.PositiveIntegerField(default=10)
     
     def __str__(self):
         return self.name
@@ -56,6 +68,9 @@ class Order(models.Model):
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=20)
     country = models.CharField(max_length=100)
+    stripe_payment_intent_id = models.CharField(max_length=255, blank=True, null=True)
+    is_paid = models.BooleanField(default=False) 
+    payment_method = models.CharField(max_length=50, default='Stripe')
     
     def __str__(self):
         return f"Order #{self.id} by {self.user.username}"

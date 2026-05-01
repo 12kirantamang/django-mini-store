@@ -44,10 +44,12 @@ class OrderAdmin(admin.ModelAdmin):
         'customer_name', 
         'email', 
         'total_amount', 
-        'status',  # ADDED
+        'status',  
         'status_colored', 
         'created_at', 
-        'item_count'
+        'item_count',
+        'is_paid',
+        'payment_method',
     ]
     list_filter = ['status', 'created_at', 'city']
     search_fields = [
@@ -76,6 +78,8 @@ class OrderAdmin(admin.ModelAdmin):
                 'id',
                 'user',
                 'status',
+                'is_paid', 
+                'stripe_payment_intent_id',
                 'total_amount',
                 'created_at'
             )
