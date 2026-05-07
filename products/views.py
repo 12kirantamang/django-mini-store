@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.db import transaction
 from django.contrib.auth import logout
 from .models import Product, Cart, CartItem, Order, OrderItem
+from .models import Product
+from django.db.models import Q
 
 # Initialize Stripe with the key from  settings
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -177,3 +179,26 @@ def order_confirmation(request, order_id):
     """Order confirmation - REQUIRES LOGIN"""
     order = get_object_or_404(Order, id=order_id, user=request.user)
     return render(request, 'products/order_confirmation.html', {'order': order})
+
+
+def search(request):
+    query = request.GET.get('q')
+    products = []
+
+    if query:
+        products = Product.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query)
+        )
+
+    return render(request, 'products/search_results.html', {
+        'query': query,
+        'products': products
+    })
+
+
+def product_detail(request, id):
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'products/product_detail.html', {
+        'product': product
+    })

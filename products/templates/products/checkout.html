@@ -1,6 +1,28 @@
 {% extends "products/base.html" %}
 {% load static %}
 {% block content %}
+<style>
+ 
+    .btn-check + .btn .bi-check-circle-fill {
+        display: none;
+    }
+    .btn-check:checked + .btn .bi-check-circle-fill {
+        display: inline-block;
+    }
+    
+ 
+    .btn-check:checked + .btn {
+        border-color: #000 !important;
+        background-color: #fcfcfc !important;
+        border-width: 2px;
+    }
+
+
+    .btn-outline-secondary:hover {
+        background-color: #f8f9fa;
+        color: inherit;
+    }
+</style>
 <section id="checkout" class="padding-large">
   <div class="container">
     <div class="row">
@@ -46,23 +68,41 @@
             </div>
           </div>
 
-          <div class="payment-method-section mt-4 mb-4">
-            <h4 class="text-uppercase mb-3">Payment Method</h4>
-            <div class="card p-3">
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="payment_method" id="stripe" value="Stripe" checked>
-                <label class="form-check-label" for="stripe">
-                  Credit Card (Stripe)
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="payment_method" id="cod" value="COD">
-                <label class="form-check-label" for="cod">
-                  Cash on Delivery
-                </label>
-              </div>
-            </div>
-          </div>
+         <div class="payment-method-container mt-4 mb-4">
+    <h5 class="text-uppercase fw-bold mb-3 small" style="letter-spacing: 1px;">Payment Method</h5>
+    
+    <div class="row g-3">
+        <div class="col-md-6">
+            <input type="radio" class="btn-check" name="payment_method" id="stripe" value="Stripe" checked autocomplete="off">
+            <label class="btn btn-outline-secondary w-100 p-3 rounded-3 shadow-sm d-flex align-items-center justify-content-start text-start h-100" for="stripe">
+                <div class="me-3 bg-light rounded p-2 text-dark">
+                    <i class="bi bi-credit-card-2-front fs-4"></i>
+                </div>
+                <div>
+                    <div class="fw-bold text-dark">Credit Card</div>
+                    <div class="small text-muted">Secure via Stripe</div>
+                </div>
+                <i class="bi bi-check-circle-fill ms-auto text-primary d-none-if-unchecked"></i>
+            </label>
+        </div>
+
+        <div class="col-md-6">
+            <input type="radio" class="btn-check" name="payment_method" id="cod" value="COD" autocomplete="off">
+            <label class="btn btn-outline-secondary w-100 p-3 rounded-3 shadow-sm d-flex align-items-center justify-content-start text-start h-100" for="cod">
+                <div class="me-3 bg-light rounded p-2 text-dark">
+                    <i class="bi bi-truck fs-4"></i>
+                </div>
+                <div>
+                    <div class="fw-bold text-dark">Cash on Delivery</div>
+                    <div class="small text-muted">Pay at your doorstep</div>
+                </div>
+                <i class="bi bi-check-circle-fill ms-auto text-primary d-none-if-unchecked"></i>
+            </label>
+        </div>
+    </div>
+</div>
+
+
           
           <div class="d-flex justify-content-between mt-4">
             <a href="{% url 'cart' %}" class="btn btn-medium btn-outline-dark">Back to Cart</a>
@@ -101,13 +141,13 @@
 </div>
 </section>
 <script>
-    // Initialize Stripe with your Public Key
+    
     const stripe = Stripe('your_publishable_key_here');
     const elements = stripe.elements();
     const card = elements.create('card');
     card.mount('#card-element');
 
-    // Logic to show/hide Stripe UI based on radio buttons
+    
     const stripeContainer = document.getElementById('stripe-card-element-container');
     document.querySelectorAll('input[name="payment_method"]').forEach((elem) => {
         elem.addEventListener("change", function(event) {

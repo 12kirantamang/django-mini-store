@@ -194,6 +194,10 @@
                   <a class="nav-link me-4" href="{% url 'cart' %}">Cart</a>
 
                 </li>
+      <form method="get" action="{% url 'search' %}" class="d-flex me-3">
+  <input type="text" name="q" class="form-control me-2" placeholder="Search...">
+  <button class="btn btn-outline-dark" type="submit">Search</button>
+</form>
               
               </ul>
             </div>
