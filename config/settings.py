@@ -67,7 +67,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Add this line
+        'DIRS': [BASE_DIR / 'templates'],  
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,8 +95,7 @@ DATABASES = {
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -147,7 +146,7 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 # CSRF settings
-CSRF_COOKIE_SECURE = False  # Set to True only if using HTTPS
+CSRF_COOKIE_SECURE = False  
 CSRF_COOKIE_HTTPONLY = False
 CSRF_USE_SESSIONS = False
 LOGIN_REDIRECT_URL = 'home'  

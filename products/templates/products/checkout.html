@@ -1,28 +1,6 @@
 {% extends "products/base.html" %}
 {% load static %}
 {% block content %}
-<style>
- 
-    .btn-check + .btn .bi-check-circle-fill {
-        display: none;
-    }
-    .btn-check:checked + .btn .bi-check-circle-fill {
-        display: inline-block;
-    }
-    
- 
-    .btn-check:checked + .btn {
-        border-color: #000 !important;
-        background-color: #fcfcfc !important;
-        border-width: 2px;
-    }
-
-
-    .btn-outline-secondary:hover {
-        background-color: #f8f9fa;
-        color: inherit;
-    }
-</style>
 <section id="checkout" class="padding-large">
   <div class="container">
     <div class="row">
@@ -101,9 +79,7 @@
         </div>
     </div>
 </div>
-
-
-          
+    
           <div class="d-flex justify-content-between mt-4">
             <a href="{% url 'cart' %}" class="btn btn-medium btn-outline-dark">Back to Cart</a>
             <button type="submit" class="btn btn-medium btn-dark">Place Order</button>
@@ -140,23 +116,5 @@
     <div id="card-errors" role="alert" class="text-danger mt-2"></div>
 </div>
 </section>
-<script>
-    
-    const stripe = Stripe('your_publishable_key_here');
-    const elements = stripe.elements();
-    const card = elements.create('card');
-    card.mount('#card-element');
 
-    
-    const stripeContainer = document.getElementById('stripe-card-element-container');
-    document.querySelectorAll('input[name="payment_method"]').forEach((elem) => {
-        elem.addEventListener("change", function(event) {
-            if (event.target.value === "Stripe") {
-                stripeContainer.style.display = "block";
-            } else {
-                stripeContainer.style.display = "none";
-            }
-        });
-    });
-</script>
 {% endblock %}

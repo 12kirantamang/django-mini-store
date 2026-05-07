@@ -1,0 +1,19 @@
+.btn-check + .btn .bi-check-circle-fill {
+        display: none;
+    }
+    .btn-check:checked + .btn .bi-check-circle-fill {
+        display: inline-block;
+    }
+    
+ 
+    .btn-check:checked + .btn {
+        border-color: #000 !important;
+        background-color: #fcfcfc !important;
+        border-width: 2px;
+    }
+
+
+    .btn-outline-secondary:hover {
+        background-color: #f8f9fa;
+        color: inherit;
+    }

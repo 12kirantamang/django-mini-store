@@ -10,7 +10,7 @@ from .models import Product, Cart, CartItem, Order, OrderItem
 from .models import Product
 from django.db.models import Q
 
-# Initialize Stripe with the key from  settings
+#  Stripe with the key from  settings
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def home(request):
