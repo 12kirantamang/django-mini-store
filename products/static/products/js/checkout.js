@@ -1,16 +1,25 @@
- const stripe = Stripe('your_publishable_key_here');
-    const elements = stripe.elements();
-    const card = elements.create('card');
-    card.mount('#card-element');
-
-    
+document.addEventListener('DOMContentLoaded', function () {
+    const stripeRadio = document.getElementById('stripe');
+    const codRadio = document.getElementById('cod');
     const stripeContainer = document.getElementById('stripe-card-element-container');
-    document.querySelectorAll('input[name="payment_method"]').forEach((elem) => {
-        elem.addEventListener("change", function(event) {
-            if (event.target.value === "Stripe") {
-                stripeContainer.style.display = "block";
-            } else {
-                stripeContainer.style.display = "none";
-            }
-        });
-    });
+
+    function toggleStripeElement() {
+      if (!stripeContainer) return; // nothing to toggle
+      if (stripeRadio && stripeRadio.checked) {
+        stripeContainer.style.display = 'block';
+      } else {
+        stripeContainer.style.display = 'none';
+      }
+    }
+
+    // Attach listeners only when the elements exist (avoids "cannot read properties of null").
+    if (stripeRadio) {
+      stripeRadio.addEventListener('change', toggleStripeElement);
+    }
+    if (codRadio) {
+      codRadio.addEventListener('change', toggleStripeElement);
+    }
+
+    // Run on page load to set correct initial state (safe even if elements missing)
+    toggleStripeElement();
+  });

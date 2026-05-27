@@ -8,6 +8,7 @@ from django.db import transaction
 from django.contrib.auth import logout
 from .models import Product, Cart, CartItem, Order, OrderItem
 from .models import Product
+from .models import Wishlist
 from django.db.models import Q
 
 #  Stripe with the key from  settings
@@ -18,7 +19,10 @@ def home(request):
     if request.user.is_authenticated and request.user.is_staff:
         logout(request)
     products = Product.objects.all().order_by('-id')
-    return render(request, 'products/index.html', {'products': products})
+    wishlist_ids = []
+    if request.user.is_authenticated:
+        wishlist_ids = list(Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True))
+    return render(request, 'products/index.html', {'products': products, 'wishlist_ids': wishlist_ids})
 
 @login_required
 def cart(request):
@@ -184,6 +188,7 @@ def order_confirmation(request, order_id):
 def search(request):
     query = request.GET.get('q')
     products = []
+    wishlist_ids = []
 
     if query:
         products = Product.objects.filter(
@@ -191,14 +196,45 @@ def search(request):
             Q(description__icontains=query)
         )
 
+    if request.user.is_authenticated:
+        wishlist_ids = list(Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True))
+
     return render(request, 'products/search_results.html', {
         'query': query,
-        'products': products
+        'products': products,
+        'wishlist_ids': wishlist_ids,
     })
 
 
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
+    # check if current user has this product in wishlist
+    in_wishlist = False
+    if request.user.is_authenticated:
+        in_wishlist = Wishlist.objects.filter(user=request.user, product=product).exists()
+
     return render(request, 'products/product_detail.html', {
-        'product': product
+        'product': product,
+        'in_wishlist': in_wishlist,
     })
+
+
+@login_required
+def toggle_wishlist(request, product_id):
+    """Toggle wishlist entry for the logged-in user."""
+    product = get_object_or_404(Product, id=product_id)
+    wishlist_entry, created = Wishlist.objects.get_or_create(user=request.user, product=product)
+    if not created:
+        wishlist_entry.delete()
+        messages.info(request, f"Removed {product.name} from your wishlist.")
+    else:
+        messages.success(request, f"Added {product.name} to your wishlist.")
+    return redirect(request.META.get('HTTP_REFERER', 'product_detail'))
+
+
+@login_required
+def wishlist_view(request):
+    entries = Wishlist.objects.filter(user=request.user).select_related('product').order_by('-added_at')
+    products = [e.product for e in entries]
+    return render(request, 'products/wishlist.html', {'products': products})
+# CSV import/export views removed per request

@@ -1,6 +1,10 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Product, Cart, CartItem, Order, OrderItem
+from django.urls import path
+from django.http import HttpResponse
+import csv
+from decimal import Decimal
+from .models import Product, Cart, CartItem, Order, OrderItem, Wishlist
 
 
 @admin.register(Product)
@@ -71,6 +75,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_editable = ['status']
     ordering = ['-created_at']
     date_hierarchy = 'created_at'
+    change_list_template = 'admin/orders_change_list.html'
     
     fieldsets = (
         ('Order Information', {
@@ -161,6 +166,69 @@ class OrderAdmin(admin.ModelAdmin):
         return format_html(html)
     order_summary.short_description = 'Order Items Summary'
 
+    # ------------------ CSV export for admin ------------------
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('export-customers-csv/', self.admin_site.admin_view(self.export_customers_csv), name='export_customers_csv'),
+        ]
+        return custom_urls + urls
+
+    def export_customers_csv(self, request):
+        """
+        Export customers and their order details as a CSV file.
+
+        Only staff users (admin) can access this view because we wrap it
+        with admin_site.admin_view in get_urls.
+        """
+        # Build HTTP response with CSV headers
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="customers_orders.csv"'
+
+        writer = csv.writer(response)
+
+        # Header row
+        writer.writerow([
+            'Order ID',
+            'Customer Name',
+            'Email',
+            'Phone',
+            'Address',
+            'City',
+            'Postal Code',
+            'Country',
+            'Order Created At',
+            'Total Amount',
+            'Is Paid',
+            'Payment Method',
+            'Items'
+        ])
+
+        # Iterate over orders and write rows
+        for order in Order.objects.select_related('user').prefetch_related('items__product').all().order_by('-created_at'):
+            items_summary = []
+            for item in order.items.all():
+                items_summary.append(f"{item.product.name} x{item.quantity} (${item.price})")
+            items_text = '; '.join(items_summary)
+
+            writer.writerow([
+                order.id,
+                order.full_name,
+                order.email,
+                order.phone,
+                order.address.replace('\n', ' '),
+                order.city,
+                order.postal_code,
+                order.country,
+                order.created_at.isoformat(),
+                f"{order.total_amount}",
+                'Yes' if order.is_paid else 'No',
+                order.payment_method,
+                items_text,
+            ])
+
+        return response
+
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
@@ -192,3 +260,10 @@ class OrderItemAdmin(admin.ModelAdmin):
     def total_price(self, obj):
         return f"${obj.total_price()}"
     total_price.short_description = 'Total'
+
+
+@admin.register(Wishlist)
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = ['user', 'product', 'added_at']
+    search_fields = ['user__username', 'product__name']
+    list_filter = ['added_at']

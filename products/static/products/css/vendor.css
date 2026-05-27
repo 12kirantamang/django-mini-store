@@ -1,10 +1,4 @@
-/*
-- Magnific Popup Css
-*/
-
-/*--------------------------------------------------------------
-/** - Magnific Popup Css
---------------------------------------------------------------*/
+/* Magnific Popup CSS - third-party styles kept as-is */
 
 .mfp-bg {
   top: 0;
@@ -25,7 +19,9 @@
   z-index: 1043;
   position: fixed;
   outline: none !important;
-  -webkit-backface-visibility: hidden; }
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
 
 .mfp-container {
   text-align: center;
@@ -118,6 +114,7 @@ button.mfp-arrow {
   background: transparent;
   border: 0;
   -webkit-appearance: none;
+  appearance: none;
   display: block;
   outline: none;
   padding: 0;
@@ -363,9 +360,6 @@ img.mfp-img {
     padding-right: 6px; } }
 
 
-/*--------------------------------------------------------------
-/** Jarallax
---------------------------------------------------------------*/
 .jarallax {
   position: relative;
   z-index: 0;

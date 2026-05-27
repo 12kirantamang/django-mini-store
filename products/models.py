@@ -2,6 +2,9 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Max
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 
 
 class Product(models.Model):
@@ -19,9 +22,20 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', blank=True, null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='mobile')
     stock = models.PositiveIntegerField(default=10)
+    # A human-friendly sequential number used for display (1..N).
+    # Kept sequential on create and re-indexed when a product is deleted.
+    display_number = models.PositiveIntegerField(null=True, blank=True, unique=True)
     
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        # Assign a sequential display_number on first save if not set.
+        if not self.display_number:
+            # Find current max and add 1
+            max_num = Product.objects.aggregate(max_num=Max('display_number'))['max_num'] or 0
+            self.display_number = max_num + 1
+        super().save(*args, **kwargs)
 
 
 # CART MUST COME BEFORE CARTITEM
@@ -87,3 +101,29 @@ class OrderItem(models.Model):
     
     def total_price(self):
         return self.price * self.quantity
+
+
+class Wishlist(models.Model):
+    """Simple wishlist: user -> product many-to-many represented as rows for easy extension."""
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='wishlists')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='wishlisted_by')
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'product')
+
+    def __str__(self):
+        return f"{self.user.username} wishes {self.product.name}"
+
+
+@receiver(post_delete, sender=Product)
+def resequence_display_numbers(sender, instance, **kwargs):
+    """
+    After a product is deleted, re-number remaining products so display_number
+    values form a contiguous sequence starting at 1. Uses bulk update per-row
+    via queryset.update() to avoid triggering save() hooks repeatedly.
+    """
+    # Reassign display numbers based on PK order for determinism
+    products = Product.objects.order_by('id').values_list('id', flat=True)
+    for idx, pk in enumerate(products, start=1):
+        Product.objects.filter(pk=pk).update(display_number=idx)

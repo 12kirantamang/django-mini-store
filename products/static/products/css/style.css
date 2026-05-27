@@ -7,22 +7,7 @@ Description: Ministore is specially designed product packaged for Ministore by M
 Version: 
 */
 
-/*--------------------------------------------------------------
-This is main CSS file that contains custom style rules used in this template
---------------------------------------------------------------*/
-
-/*------------------------------------*\
-    Table of contents
-\*------------------------------------*/
-
-/*------------------------------------------------
-
-CSS STRUCTURE:
-
-    
-/*--------------------------------------------------------------
-/** 1. VARIABLES
---------------------------------------------------------------*/
+:root {
 :root {
   --accent-color:             #717171;
   --white-color:              #fff;
@@ -41,6 +26,26 @@ CSS STRUCTURE:
   --swiper-theme-color:       #4A4A4A;
   --swiper-pagination-color:  #4A4A4A;
 
+
+/* Prevent fixed header from covering page content.
+   We set a CSS custom property --header-height and apply padding-top using it.
+   A small JS in base.html keeps the variable in sync with header height on resize. */
+:root {
+  --header-height: 72px; /* fallback */
+}
+
+body {
+  padding-top: var(--header-height);
+}
+
+@media (min-width: 992px) {
+  /* On large screens header may be slightly taller, keep an increased fallback */
+  :root { --header-height: 72px; }
+}
+@media (max-width: 991px) {
+  /* On tablets and phones header height is usually smaller */
+  :root { --header-height: 64px; }
+}
 }
 
 /* on mobile devices below 600px
@@ -448,6 +453,7 @@ h3.cart-title {
   -webkit-transform: translateY(-40px);
   transform: translateY(-40px);
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transition-property: -webkit-transform;
   transition-property: transform;
   -webkit-transition-duration: 0.3s;
@@ -1020,19 +1026,158 @@ figure.instagram-item img.insta-image {
     fill: var(--primary-color);
 }
 /* Consistent product image sizing */
+
 .image-holder {
-    width: 100%;
-    height: 300px; /* Adjust to match your template */
-    overflow: hidden;
-    position: relative;
-    background-color: #f8f8f8;
+  width: 100%;
+  /* Prefer aspect-ratio so height scales with width responsively.
+     fallback to a sensible min-height for older browsers */
+  aspect-ratio: 4 / 3;
+  min-height: 220px;
+  overflow: hidden;
+  position: relative;
+  background-color: #f8f8f8;
 }
 
 .image-holder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  max-width: 100%;
+}
+
+/* Hover effect for product images: gentle scale + shadow */
+.product-card .image-holder {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  will-change: transform;
+}
+.product-card .image-holder img {
+  transition: transform 0.35s ease;
+  display: block;
+}
+.product-card:hover .image-holder {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+.product-card:hover .image-holder img {
+  transform: scale(1.04);
+}
+
+/* Also support alternate card markup (search results) where img is direct child */
+.product-card .card-img-top,
+.product-card img.card-img-top,
+.product-card .position-relative img {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: block;
+}
+.product-card:hover .card-img-top,
+.product-card:hover img.card-img-top,
+.product-card:hover .position-relative img {
+  transform: scale(1.04);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* Modern product card overlay */
+.card-media {
+  width: 100%;
+  /* Use an aspect ratio so cards are consistent across viewports */
+  aspect-ratio: 4 / 3;
+  min-height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+  background-color: #f8f8f8;
+  box-shadow: 0 6px 18px rgba(20,20,20,0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.card-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s cubic-bezier(.22,.9,.38,1);
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.card-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: opacity 0.35s ease;
+  padding: 18px;
+  z-index: 2;
+  pointer-events: none; /* allow clicks to pass when hidden */
+}
+
+.overlay-content {
+  width: 100%;
+  color: #fff;
+  transform: translateY(18px);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  opacity: 0;
+}
+
+.overlay-title {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.overlay-price {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: #ffd966;
+  font-weight: 700;
+}
+.view-product-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff !important;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* Hover interactions */
+.product-card:hover .card-media {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(10,10,10,0.14);
+}
+.product-card:hover .card-media-img {
+  transform: scale(1.12);
+}
+.product-card:hover .card-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.product-card:hover .overlay-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .card-media { aspect-ratio: 4 / 3; min-height: 180px; }
+  .image-holder { aspect-ratio: 4 / 3; min-height: 160px; }
+  .overlay-title { font-size: 0.95rem; }
+}
+@media (max-width: 480px) {
+  .card-media { aspect-ratio: 1 / 1; min-height: 140px; }
+  .image-holder { aspect-ratio: 1 / 1; min-height: 120px; }
+  .overlay-content { padding: 8px; }
 }
 
 /* For different sections */
@@ -1042,4 +1187,5 @@ figure.instagram-item img.insta-image {
 
 #smart-watches .image-holder {
     height: 300px;
+}
 }

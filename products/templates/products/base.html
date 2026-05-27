@@ -12,8 +12,6 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'products/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'products/style.css' %}"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'products/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css " />
@@ -112,25 +110,25 @@
           
           <ul class="cat-list">
             <li class="cat-list-item">
-              <a href="#" title="Mobile Phones">Mobile Phones</a>
+              <a href="#" title="Mobile Phones">携帯電話</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Smart Watches">Smart Watches</a>
+              <a href="#" title="Smart Watches">スマートウォッチ</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Headphones">Headphones</a>
+              <a href="#" title="Headphones">ヘッドホン</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Accessories">Accessories</a>
+              <a href="#" title="Accessories">アクセサリー</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Monitors">Monitors</a>
+              <a href="#" title="Monitors">モニター</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Speakers">Speakers</a>
+              <a href="#" title="Speakers">スピーカー</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Memory Cards">Memory Cards</a>
+              <a href="#" title="Memory Cards">メモリーカード </a>
             </li>
           </ul>
 
@@ -158,49 +156,53 @@
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  {% comment %} <a class="nav-link me-4 active" href="#billboard">Home</a> {% endcomment %}
-                  <a class="nav-link me-4 active" href="{% url 'home' %}">Home</a>
+                  <a class="nav-link me-4 active" href="{% url 'home' %}">ホーム</a>
 
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#company-services">Services</a>
+                  <a class="nav-link me-4" href="#company-services">サービス</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#mobile-products">Products</a>
+                  <a class="nav-link me-4" href="#mobile-products">製品</a>
                 </li>
                 <li class="nav-item">
-                  {% comment %} <a class="nav-link me-4" href="#smart-watches">Watches</a> {% endcomment %}
+              
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#yearly-sale">Sale</a>
+                  <a class="nav-link me-4" href="#yearly-sale">セール</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#latest-blog">Blog</a>
+                  <a class="nav-link me-4" href="#latest-blog">ブログ</a>
                 </li>
                 <li class="nav-item">
-                 {% if user.is_authenticated %}
-  <li class="nav-item">
-    <a class="nav-link me-4" href="#">Welcome, {{ user.username }}</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link me-4" href="{% url 'logout' %}">Logout</a>
-  </li>
+                {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="#"> {{ user.username }}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="{% url 'wishlist' %}">ウィッシュリスト</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="{% url 'logout' %}">ログアウト</a>
+                  </li>
 {% else %}
   <li class="nav-item">
-    <a class="nav-link me-4" href="{% url 'login' %}">Login</a>
+    <a class="nav-link me-4" href="{% url 'login' %}">ログイン</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link me-4" href="{% url 'signup' %}">Register</a>
+    <a class="nav-link me-4" href="{% url 'signup' %}">登録</a>
   </li>
 {% endif %}
                 <li class="nav-item">
                 
-                  <a class="nav-link me-4" href="{% url 'cart' %}">Cart</a>
+                  <a class="nav-link me-4" href="{% url 'cart' %}">カート</a>
 
                 </li>
       <form method="get" action="{% url 'search' %}" class="d-flex me-3">
-  <input type="text" name="q" class="form-control me-2" placeholder="Search...">
-  <button class="btn btn-outline-dark" type="submit">Search</button>
+  <input type="text" name="q" class="form-control me-2" placeholder="検索...">
+  <button class="btn btn-outline-dark text-nowrap" type="submit">
+  検索
+</button>
 </form>
               
               </ul>
@@ -218,7 +220,7 @@
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu">
                   <img src="{% static 'products/images/main-logo.png' %}" alt="logo">
-                  <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio erat nullam fringilla.</p>
+                  <p>高品質なサービスを提供し、安心して学べる環境を整えています。経験豊富なスタッフが丁寧にサポートし、快適な学習体験をお届けします。</p>
                   <div class="social-links">
                     <ul class="d-flex list-unstyled">
                       <li>
@@ -262,54 +264,54 @@
               </div>
               <div class="col-lg-2 col-sm-6 pb-3">
                 <div class="footer-menu text-uppercase">
-                  <h5 class="widget-title pb-2">Quick Links</h5>
+                  <h5 class="widget-title pb-2">クイックリンク</h5>
                   <ul class="menu-list list-unstyled text-uppercase">
                     <li class="menu-item pb-2">
-                      <a href="#">Home</a>
+                      <a href="#">ホーム</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">About</a>
+                      <a href="#">会社概要</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Shop</a>
+                      <a href="#">ショップ</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Blogs</a>
+                      <a href="#">ブログ</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Contact</a>
+                      <a href="#">お問い合わせ</a>
                     </li>
                   </ul>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu text-uppercase">
-                  <h5 class="widget-title pb-2">Help & Info Help</h5>
+                  <h5 class="widget-title pb-2">ヘルプと情報ヘルプ</h5>
                   <ul class="menu-list list-unstyled">
                     <li class="menu-item pb-2">
-                      <a href="#">Track Your Order</a>
+                      <a href="#">注文状況を確認する</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Returns Policies</a>
+                      <a href="#">返品ポリシー</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Shipping + Delivery</a>
+                      <a href="#">配送と配達</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Contact Us</a>
+                      <a href="#">お問い合わせ</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Faqs</a>
+                      <a href="#">よくあるご質問</a>
                     </li>
                   </ul>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu contact-item">
-                  <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-                  <p>Do you have any queries or suggestions? <a href="mailto:">yourinfo@gmail.com</a>
+                  <h5 class="widget-title text-uppercase pb-2">お問い合わせ</h5>
+                  <p>ご質問やご提案はございますか？<a href="mailto:">yourinfo@gmail.com</a>
                   </p>
-                  <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a>
+                  <p>サポートが必要な場合は、お気軽にお電話ください。 <a href="">+55 111 222 333 44</a>
                   </p>
                 </div>
               </div>
@@ -320,36 +322,44 @@
       <hr>
     </footer>
     <div id="footer-bottom">
-      <div class="container">
-        <div class="row d-flex flex-wrap justify-content-between">
-          <div class="col-md-4 col-sm-6">
-            <div class="Shipping d-flex">
-              <p>We ship with:</p>
-              <div class="card-wrap ps-2">
-                <img src="{% static 'products/images/dhl.png' %}" alt="visa">
-                <img src="{% static 'products/images/shippingcard.png' %}" alt="mastercard">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="payment-method d-flex">
-              <p>Payment options:</p>
-              <div class="card-wrap ps-2">
-                <img src="{% static 'products/images/visa.jpg' %}" alt="visa">
-                <img src="{% static 'products/images/mastercard.jpg' %}" alt="mastercard">
-                <img src="{% static 'products/images/paypal.jpg' %}" alt="paypal">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="copyright">
-              <p>© Copyright 2023 MiniStore. Design by <a href="https://templatesjungle.com/ ">TemplatesJungle</a> Distribution by <a href="https://themewagon.com ">ThemeWagon</a>
-              </p>
-            </div>
+  <div class="container">
+    <div class="row d-flex flex-wrap justify-content-between">
+      
+      <div class="col-md-4 col-sm-6">
+        <div class="Shipping d-flex">
+          <p>配送会社:</p>
+          <div class="card-wrap ps-2">
+            <img src="{% static 'products/images/dhl.png' %}" alt="DHL">
+            <img src="{% static 'products/images/shippingcard.png' %}" alt="Shipping">
           </div>
         </div>
       </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="payment-method d-flex">
+          <p>お支払い方法:</p>
+          <div class="card-wrap ps-2">
+            <img src="{% static 'products/images/visa.jpg' %}" alt="visa">
+            <img src="{% static 'products/images/mastercard.jpg' %}" alt="mastercard">
+            <img src="{% static 'products/images/paypal.jpg' %}" alt="paypal">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="copyright">
+          <p>
+            © 2026 MiniStore. Design by 
+            <a href="https://templatesjungle.com/">TemplatesJungle</a>
+            Distribution by 
+            <a href="https://themewagon.com">ThemeWagon</a>
+          </p>
+        </div>
+      </div>
+
     </div>
+  </div>
+</div>
     <script src="{% static 'products/js/jquery-1.11.0.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js "></script>
     <script type="text/javascript" src="{% static 'products/js/bootstrap.bundle.min.js' %}"></script>
@@ -359,3 +369,29 @@
 
     {% block extra_js %}{% endblock %}
   </body>
+
+  {# Django messages -> Bootstrap toasts #}
+  {% if messages %}
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1200;">
+      {% for message in messages %}
+        <div class="toast align-items-center text-bg-light border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              {{ message }}
+            </div>
+            <button type="button" class="btn-close btn-close-black me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastList = toastElList.map(function (toastEl) {
+          var t = new bootstrap.Toast(toastEl, { delay: 4000 });
+          t.show();
+          return t;
+        });
+      });
+    </script>
+  {% endif %}

@@ -7,52 +7,52 @@
       <div class="col-md-8">
         
         <div class="alert alert-success py-5">
-          <h2 class="display-6 mb-3">🎉 Thank You!</h2>
-          <p class="lead">Your order has been placed successfully.</p>
+          <h2 class="display-6 mb-3">🎉 ご注文ありがとうございます</h2>
+          <p class="lead">注文手続きが完了いたしました。</p>
           <hr>
-          <p class="mb-0">Order Number: <strong>#{{ order.id }}</strong></p>
+          <p class="mb-0">注文番号: <strong>#{{ order.id }}</strong></p>
         </div>
         
         <div class="card mt-4 text-start">
           <div class="card-header bg-dark text-white">
-            <h4 class="mb-0">Order Details</h4>
+            <h4 class="mb-0">注文内容の詳細</h4>
           </div>
           <div class="card-body">
             <table class="table table-borderless">
               <tr>
-                <td width="30%"><strong>Name:</strong></td>
-                <td>{{ order.full_name }}</td>
+                <td width="30%"><strong>お名前:</strong></td>
+                <td>{{ order.full_name }} 様</td>
               </tr>
               <tr>
-                <td><strong>Email:</strong></td>
+                <td><strong>メールアドレス:</strong></td>
                 <td>{{ order.email }}</td>
               </tr>
               <tr>
-                <td><strong>Phone:</strong></td>
+                <td><strong>電話番号:</strong></td>
                 <td>{{ order.phone }}</td>
               </tr>
               <tr>
-                <td><strong>Address:</strong></td>
-                <td>{{ order.address }}, {{ order.city }}, {{ order.postal_code }}, {{ order.country }}</td>
+                <td><strong>お届け先住所:</strong></td>
+                <td>〒{{ order.postal_code }} {{ order.country }} {{ order.city }} {{ order.address }}</td>
               </tr>
               <tr>
-                <td><strong>Total:</strong></td>
-                <td class="text-primary"><strong>${{ order.total_amount }}</strong></td>
+                <td><strong>合計金額:</strong></td>
+                <td class="text-primary"><strong>¥{{ order.total_amount }}</strong></td>
               </tr>
               <tr>
-                <td><strong>Status:</strong></td>
+                <td><strong>ステータス:</strong></td>
                 <td><span class="badge bg-warning">{{ order.get_status_display }}</span></td>
               </tr>
               <tr>
-                <td><strong>Date:</strong></td>
-                <td>{{ order.created_at|date:"F d, Y H:i" }}</td>
+                <td><strong>注文日時:</strong></td>
+                <td>{{ order.created_at|date:"Y年m月d日 H:i" }}</td>
               </tr>
             </table>
           </div>
         </div>
         
         <div class="mt-4">
-          <a href="{% url 'home' %}" class="btn btn-medium btn-dark">Continue Shopping</a>
+          <a href="{% url 'home' %}" class="btn btn-medium btn-dark">お買い物を続ける</a>
         </div>
         
       </div>

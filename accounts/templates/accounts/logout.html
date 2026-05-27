@@ -44,15 +44,15 @@
     </style>
 </head>
 <body>
-    <div class="logout-card">
-        <h2>Confirm Logout</h2>
-        <p>Are you sure you want to log out of MiniStore?</p>
-        
-        <form method="post" action="{% url 'logout' %}" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit" class="btn">Yes, Log Out</button>
-        </form>
-        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
-    </div>
+   <div class="logout-card">
+    <h2>ログアウトの確認</h2>
+    <p>MiniStoreからログアウトしてもよろしいですか？</p>
+    
+    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn">ログアウトする</button>
+    </form>
+    <a href="{% url 'home' %}" class="btn btn-secondary">キャンセル</a>
+</div>
 </body>
 </html>

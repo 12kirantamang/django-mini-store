@@ -5,7 +5,7 @@
 <div class="container mt-5 pt-5 pb-5">
     <nav aria-label="breadcrumb" class="mb-4">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-decoration-none text-dark">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-decoration-none text-dark">ホーム</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
         </ol>
     </nav>
@@ -16,41 +16,42 @@
                 {% if product.image %}
                     <img src="{{ product.image.url }}" class="img-fluid object-fit-cover w-100" style="max-height: 600px;" alt="{{ product.name }}">
                 {% else %}
-                    <img src="{% static 'images/default-product.jpg' %}" class="img-fluid" alt="No image available">
+                    <img src="{% static 'images/default-product.jpg' %}" class="img-fluid" alt="画像なし">
                 {% endif %}
             </div>
         </div>
 
         <div class="col-md-6 d-flex flex-column justify-content-center">
             <div class="ps-md-4">
-                <span class="badge bg-secondary mb-2 text-uppercase fw-light">In Stock</span>
-                <h1 class="display-5 fw-bold mb-3 text-uppercase">{{ product.name }}</h1>
+                <span class="badge bg-secondary mb-2 text-uppercase fw-light">在庫あり</span>
+                <h1 class="display-5 fw-bold mb-3">{{ product.name }}</h1>
                 
                 <h3 class="text-success fw-bold mb-4">
-                    ${{ product.price }}
+                    ¥{{ product.price }} <span class="fs-6 text-muted fw-normal">(税込)</span>
                 </h3>
 
                 <hr class="my-4 opacity-10">
 
                 <p class="lead text-muted mb-5">
-                    {{ product.description|default:"No description available ." }}
+                    {{ product.description|default:"商品説明はありません。" }}
                 </p>
 
                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-start mt-auto">
-                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-dark btn-lg px-5 py-3 text-uppercase fw-bold shadow-sm">
-                        <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-dark btn-lg px-5 py-3 fw-bold shadow-sm">
+                        <i class="bi bi-cart-plus me-2"></i>カートに入れる
                     </a>
                     
-                  <button class="btn btn-wishlist btn-lg px-4 py-3 shadow-sm">
-    <i class="bi bi-heart"></i>
-</button>
-
-
+                    <form method="post" action="{% url 'toggle_wishlist' product.id %}" class="d-inline-block">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-wishlist btn-lg px-4 py-3 shadow-sm {% if in_wishlist %}active{% endif %}">
+                            <i class="bi {% if in_wishlist %}bi-heart-fill text-danger{% else %}bi-heart{% endif %}"></i>
+                        </button>
+                    </form>
                 </div>
 
                 <div class="mt-5 border-top pt-4">
-                    <p class="small text-muted mb-1"><i class="bi bi-truck me-2"></i> Free shipping on orders over $50</p>
-                    <p class="small text-muted"><i class="bi bi-arrow-return-left me-2"></i> 30-day return policy</p>
+                    <p class="small text-muted mb-1"><i class="bi bi-truck me-2"></i> 5,000円以上のお買い上げで送料無料</p>
+                    <p class="small text-muted"><i class="bi bi-arrow-return-left me-2"></i> 30日間返品保証</p>
                 </div>
             </div>
         </div>

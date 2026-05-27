@@ -2,8 +2,7 @@
 {% load static %}
 {% block content %}
 
-
-<!-- Billboard/Hero Section -->
+<!-- ヒーローセクション -->
 <section id="billboard" class="position-relative bg-light-blue" style="min-height: 600px; padding: 100px 0; overflow: visible;">
   <div class="swiper main-swiper" style="height: 100%;">
     <div class="swiper-wrapper">
@@ -12,13 +11,13 @@
           <div class="row d-flex align-items-center">
             <div class="col-md-6">
               <div class="banner-content">
-                <h1 class="display-2 text-uppercase text-dark pb-5">Your Products Are Great.</h1>
-                <a href="{% url 'home' %}" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
+                <h1 class="display-2 text-uppercase text-dark pb-5">あなたの商品は素晴らしい。</h1>
+                <a href="{% url 'home' %}" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">商品を見る</a>
               </div>
             </div>
             <div class="col-md-5">
               <div class="image-holder" style="height: 450px; display: flex; align-items: center; justify-content: center;">
-                <img src="{% static 'products/images/banner-image.png' %}" alt="banner" style="max-height: 100%; width: auto;">
+                <img src="{% static 'products/images/banner-image.png' %}" alt="バナー" style="max-height: 100%; width: auto;">
               </div>
             </div>
           </div>
@@ -29,13 +28,13 @@
           <div class="row d-flex flex-wrap align-items-center">
             <div class="col-md-6">
               <div class="banner-content">
-                <h1 class="display-2 text-uppercase text-dark pb-5">Technology Hack You Won't Get</h1>
-                <a href="{% url 'home' %}" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
+                <h1 class="display-2 text-uppercase text-dark pb-5">他では手に入らないテクノロジー</h1>
+                <a href="{% url 'home' %}" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">商品を見る</a>
               </div>
             </div>
             <div class="col-md-5">
               <div class="image-holder" style="height: 450px; display: flex; align-items: center; justify-content: center;">
-                <img src="{% static 'products/images/banner-image.png' %}" alt="banner" style="max-height: 100%; width: auto;">
+                <img src="{% static 'products/images/banner-image.png' %}" alt="バナー" style="max-height: 100%; width: auto;">
               </div>
             </div>
           </div>
@@ -44,70 +43,58 @@
     </div>
   </div>
   <div class="swiper-icon swiper-arrow swiper-arrow-prev">
-    <svg class="chevron-left">
-      <use xlink:href="#chevron-left" />
-    </svg>
+    <svg class="chevron-left"><use xlink:href="#chevron-left" /></svg>
   </div>
   <div class="swiper-icon swiper-arrow swiper-arrow-next">
-    <svg class="chevron-right">
-      <use xlink:href="#chevron-right" />
-    </svg>
+    <svg class="chevron-right"><use xlink:href="#chevron-right" /></svg>
   </div>
 </section>
 
-<!-- Company Services Section -->
+<!-- サービス紹介セクション -->
 <section id="company-services" class="padding-large">
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-6 pb-3">
         <div class="icon-box d-flex">
           <div class="icon-box-icon pe-3 pb-3">
-            <svg class="cart-outline">
-              <use xlink:href="#cart-outline" />
-            </svg>
+            <svg class="cart-outline"><use xlink:href="#cart-outline" /></svg>
           </div>
           <div class="icon-box-content">
-            <h3 class="card-title text-uppercase text-dark">Free delivery</h3>
-            <p>Enjoy free shipping on all orders over $50. Fast and reliable delivery to your doorstep.</p>
+            <h3 class="card-title text-uppercase text-dark">送料無料</h3>
+            <p>¥5,000以上のご注文で送料無料。迅速・確実にお届けします。</p>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 pb-3">
         <div class="icon-box d-flex">
           <div class="icon-box-icon pe-3 pb-3">
-            <svg class="quality">
-              <use xlink:href="#quality" />
-            </svg>
+            <svg class="quality"><use xlink:href="#quality" /></svg>
           </div>
           <div class="icon-box-content">
-            <h3 class="card-title text-uppercase text-dark">Quality guarantee</h3>
-            <p>Every product is tested and certified. We stand behind our quality with 30-day returns.</p>
+            <h3 class="card-title text-uppercase text-dark">品質保証</h3>
+            <p>全商品を検品・認定済み。30日間返品保証で安心してお買い物いただけます。</p>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 pb-3">
         <div class="icon-box d-flex">
           <div class="icon-box-icon pe-3 pb-3">
-            <svg class="price-tag">
-              <use xlink:href="#price-tag" />
-            </svg>
+            <svg class="price-tag"><use xlink:href="#price-tag" /></svg>
           </div>
           <div class="icon-box-content">
-            <h3 class="card-title text-uppercase text-dark">Daily offers</h3>
-            <p>Check back every day for new deals and exclusive discounts on premium tech products.</p>
+            <h3 class="card-title text-uppercase text-dark">毎日特価</h3>
+            <p>毎日更新されるお得なセールと限定割引をお見逃しなく。</p>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 pb-3">
         <div class="icon-box d-flex">
           <div class="icon-box-icon pe-3 pb-3">
-            <svg class="shield-plus">
-              <use xlink:href="#shield-plus" />
-            </svg>
+            <svg class="shield-plus"><use xlink:href="#shield-plus" /></svg>
           </div>
           <div class="icon-box-content">
-            <h3 class="card-title text-uppercase text-dark">100% secure payment</h3>
-            <p>Your data is protected with industry-standard encryption. Shop with complete confidence.</p>
+            <h3 class="card-title text-uppercase text-dark">安全なお支払い</h3>
+            <p>業界標準の暗号化でお客様の情報を保護。安心してお買い物いただけます。</p>
           </div>
         </div>
       </div>
@@ -115,346 +102,163 @@
   </div>
 </section>
 
-<!-- Apple Products Section (First 5 from Database) -->
-<section id="mobile-products" class="product-store position-relative padding-large no-padding-top">
+<!-- 商品一覧セクション（全件・スライドなし） -->
+<section id="all-products" class="product-store position-relative padding-large no-padding-top">
   <div class="container">
     <div class="row">
       <div class="display-header d-flex justify-content-between pb-3">
-        <h2 class="display-7 text-dark text-uppercase">Apple Products</h2>
-        <div class="btn-right">
-        </div>
+        <h2 class="display-7 text-dark text-uppercase">商品一覧</h2>
+        <div class="btn-right"></div>
       </div>
-      <div class="swiper product-swiper">
-        <div class="swiper-wrapper">
-          {% for product in products|slice:":5" %}
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden; position: relative; background-color: #f8f8f8;">
-                {% if product.image %}
-                  <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                {% else %}
-                  <img src="{% static 'products/images/product-item1.jpg' %}" alt="{{ product.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="row g-4">
+        {% for product in products|slice:":10" %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="product-card position-relative">
+            <div class="image-holder card-media">
+              {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-media-img">
+              {% else %}
+                <img src="{% static 'products/images/product-item1.jpg' %}" alt="{{ product.name }}" class="card-media-img">
+              {% endif %}
+
+              <div class="card-overlay">
+                <div class="overlay-content">
+                  <h4 class="overlay-title">{{ product.name }}</h4>
+                  <div class="overlay-price">¥{{ product.price }}</div>
+                  <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-light view-product-btn">View Product</a>
+                </div>
+              </div>
+            </div>
+            <div class="cart-concern position-absolute">
+              <div class="cart-button d-flex">
+                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-medium btn-black">
+                  カートに追加 <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
+                </a>
+                {% if user.is_authenticated %}
+                <form method="post" action="{% url 'toggle_wishlist' product.id %}" class="ms-2">
+                  {% csrf_token %}
+                  {% if product.id in wishlist_ids %}
+                    <button type="submit" class="btn btn-outline-danger">♥</button>
+                  {% else %}
+                    <button type="submit" class="btn btn-outline-secondary">♡</button>
+                  {% endif %}
+                </form>
                 {% endif %}
               </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'add_to_cart' product.id %}" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">{{ product.name }}</a>
-                </h3>
-                <span class="item-price text-primary">${{ product.price }}</span>
-              </div>
+            </div>
+            <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+              <h3 class="card-title text-uppercase">
+                <a href="#">{{ product.name }}</a>
+              </h3>
+              <span class="item-price text-primary">¥{{ product.price }}</span>
             </div>
           </div>
-          {% empty %}
-          <!-- Static Fallback Products -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item1.jpg' %}" alt="iPhone 10" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 10</a>
-                </h3>
-                <span class="item-price text-primary">$980</span>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item2.jpg' %}" alt="iPhone 11" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 11</a>
-                </h3>
-                <span class="item-price text-primary">$1100</span>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item3.jpg' %}" alt="iPhone 8" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 8</a>
-                </h3>
-                <span class="item-price text-primary">$780</span>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item4.jpg' %}" alt="iPhone 13" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 13</a>
-                </h3>
-                <span class="item-price text-primary">$1500</span>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item5.jpg' %}" alt="iPhone 12" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 12</a>
-                </h3>
-                <span class="item-price text-primary">$1300</span>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
         </div>
+        {% empty %}
+        <!-- フォールバック：静的商品 -->
+        {% for i in "12345678" %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="product-card position-relative">
+            <div class="image-holder card-media">
+              <img src="{% static 'products/images/product-item1.jpg' %}" alt="商品" class="card-media-img">
+              <div class="card-overlay">
+                <div class="overlay-content">
+                  <h4 class="overlay-title">商品名</h4>
+                  <div class="overlay-price">¥98,000</div>
+                  <a href="#" class="btn btn-sm btn-light view-product-btn">View Product</a>
+                </div>
+              </div>
+            </div>
+            <div class="cart-concern position-absolute">
+              <div class="cart-button d-flex">
+                <a href="#" class="btn btn-medium btn-black">
+                  カートに追加 <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
+                </a>
+              </div>
+            </div>
+            <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+              <h3 class="card-title text-uppercase"><a href="#">商品名</a></h3>
+              <span class="item-price text-primary">¥98,000</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
       </div>
     </div>
   </div>
-  <div class="swiper-pagination position-absolute text-center"></div>
 </section>
 
-<!-- Smart Watches Section (Next 5 from Database) -->
-<section id="smart-watches" class="product-store padding-large position-relative">
-  <div class="container">
-    <div class="row">
-      <div class="display-header d-flex justify-content-between pb-3">
-        {% comment %} <h2 class="display-7 text-dark text-uppercase">Smart Watches</h2> {% endcomment %}
-        <div class="btn-right">
-          {% comment %} <a href="{% url 'home' %}" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a> {% endcomment %}
-        </div>
-      </div>
-      <div class="swiper product-watch-swiper">
-        <div class="swiper-wrapper">
-          {% for product in products|slice:"5:10" %}
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden; position: relative; background-color: #f8f8f8;">
-                {% if product.image %}
-                  <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                {% else %}
-                  <img src="{% static 'products/images/product-item6.jpg' %}" alt="{{ product.name }}" style="width: 100%; height: 100%; object-fit: cover;">
-                {% endif %}
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'add_to_cart' product.id %}" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">{{ product.name }}</a>
-                </h3>
-                <span class="item-price text-primary">${{ product.price }}</span>
-              </div>
-            </div>
-          </div>
-          {% empty %}
-          <!-- Static Fallback Products -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item6.jpg' %}" alt="Pink watch" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Pink watch</a>
-                </h3>
-                <span class="item-price text-primary">$870</span>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item7.jpg' %}" alt="Heavy watch" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Heavy watch</a>
-                </h3>
-                <span class="item-price text-primary">$680</span>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item8.jpg' %}" alt="Spotted watch" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Spotted watch</a>
-                </h3>
-                <span class="item-price text-primary">$750</span>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item9.jpg' %}" alt="Black watch" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Black watch</a>
-                </h3>
-                <span class="item-price text-primary">$650</span>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder" style="width: 100%; height: 350px; overflow: hidden;">
-                <img src="{% static 'products/images/product-item10.jpg' %}" alt="Black watch Pro" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Black watch Pro</a>
-                </h3>
-                <span class="item-price text-primary">$750</span>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="swiper-pagination position-absolute text-center"></div>
-</section>
-
-<!-- Yearly Sale Section -->
-<section id="yearly-sale" class="bg-light-blue overflow-hidden mt-5 padding-xlarge" style="background-image: url('{% static 'products/images/single-image1.png' %}');background-position: right; background-repeat: no-repeat;">
+<!-- 年末セールセクション -->
+<section id="yearly-sale" class="bg-light-blue overflow-hidden mt-5 padding-xlarge" style="background-image: url('{% static 'products/images/single-image1.png' %}'); background-position: right; background-repeat: no-repeat;">
   <div class="row d-flex flex-wrap align-items-center">
     <div class="col-md-6 col-sm-12">
       <div class="text-content offset-4 padding-medium">
-        <h3>10% off</h3>
-        <h2 class="display-2 pb-5 text-uppercase text-dark">New year sale</h2>
-        <a href="{% url 'home' %}" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Sale</a>
+        <h3>10%オフ</h3>
+        <h2 class="display-2 pb-5 text-uppercase text-dark">新年セール</h2>
+        <a href="{% url 'home' %}" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">セールを見る</a>
       </div>
     </div>
-    <div class="col-md-6 col-sm-12">
-    </div>
+    <div class="col-md-6 col-sm-12"></div>
   </div>
 </section>
 
-<!-- Latest Blog Section -->
+<!-- 最新ブログセクション -->
 <section id="latest-blog" class="padding-large">
   <div class="container">
     <div class="row">
       <div class="display-header d-flex justify-content-between pb-3">
-        <h2 class="display-7 text-dark text-uppercase">Latest Posts</h2>
+        <h2 class="display-7 text-dark text-uppercase">最新記事</h2>
         <div class="btn-right">
-          <a href="#" class="btn btn-medium btn-normal text-uppercase">Read Blog</a>
+          <a href="#" class="btn btn-medium btn-normal text-uppercase">ブログを読む</a>
         </div>
       </div>
       <div class="post-grid d-flex flex-wrap justify-content-between">
         <div class="col-lg-4 col-sm-12">
           <div class="card border-none me-3">
             <div class="card-image">
-              <img src="{% static 'products/images/post-item1.jpg' %}" alt="Gadgets" class="img-fluid">
+              <img src="{% static 'products/images/post-item1.jpg' %}" alt="ガジェット" class="img-fluid">
             </div>
           </div>
           <div class="card-body text-uppercase">
             <div class="card-meta text-muted">
-              <span class="meta-date">feb 22, 2023</span>
-              <span class="meta-category">- Gadgets</span>
+              <span class="meta-date">2023年2月22日</span>
+              <span class="meta-category">- ガジェット</span>
             </div>
             <h3 class="card-title">
-              <a href="#">Get some cool gadgets in 2023</a>
+              <a href="#">2023年のおすすめガジェット</a>
             </h3>
           </div>
         </div>
         <div class="col-lg-4 col-sm-12">
           <div class="card border-none me-3">
             <div class="card-image">
-              <img src="{% static 'products/images/post-item2.jpg' %}" alt="Technology" class="img-fluid">
+              <img src="{% static 'products/images/post-item2.jpg' %}" alt="テクノロジー" class="img-fluid">
             </div>
           </div>
           <div class="card-body text-uppercase">
             <div class="card-meta text-muted">
-              <span class="meta-date">feb 25, 2023</span>
-              <span class="meta-category">- Technology</span>
+              <span class="meta-date">2023年2月25日</span>
+              <span class="meta-category">- テクノロジー</span>
             </div>
             <h3 class="card-title">
-              <a href="#">Technology Hack You Won't Get</a>
+              <a href="#">他では手に入らないテクノロジー</a>
             </h3>
           </div>
         </div>
         <div class="col-lg-4 col-sm-12">
           <div class="card border-none me-3">
             <div class="card-image">
-              <img src="{% static 'products/images/post-item3.jpg' %}" alt="Camera" class="img-fluid">
+              <img src="{% static 'products/images/post-item3.jpg' %}" alt="カメラ" class="img-fluid">
             </div>
           </div>
           <div class="card-body text-uppercase">
             <div class="card-meta text-muted">
-              <span class="meta-date">feb 22, 2023</span>
-              <span class="meta-category">- Camera</span>
+              <span class="meta-date">2023年2月22日</span>
+              <span class="meta-category">- カメラ</span>
             </div>
             <h3 class="card-title">
-              <a href="#">Top 10 Small Camera In The World</a>
+              <a href="#">世界の小型カメラ トップ10</a>
             </h3>
           </div>
         </div>
@@ -463,43 +267,28 @@
   </div>
 </section>
 
-<!-- Testimonials Section -->
+<!-- お客様の声セクション -->
 <section id="testimonials" class="position-relative">
   <div class="container">
     <div class="row">
       <div class="review-content position-relative">
         <div class="swiper-icon swiper-arrow swiper-arrow-prev position-absolute d-flex align-items-center">
-          <svg class="chevron-left">
-            <use xlink:href="#chevron-left" />
-          </svg>
+          <svg class="chevron-left"><use xlink:href="#chevron-left" /></svg>
         </div>
         <div class="swiper testimonial-swiper">
           <div class="quotation text-center">
-            <svg class="quote">
-              <use xlink:href="#quote" />
-            </svg>
+            <svg class="quote"><use xlink:href="#quote" /></svg>
           </div>
           <div class="swiper-wrapper">
             <div class="swiper-slide text-center d-flex justify-content-center">
               <div class="review-item col-md-10">
-                <i class="icon icon-review"></i>
-                <blockquote>"The customer service was absolutely amazing. My order arrived earlier than expected and the product quality exceeded my expectations. Will definitely shop here again!"</blockquote>
+                <blockquote>「カスタマーサービスが素晴らしかったです。注文が予定より早く届き、商品の品質も期待以上でした。また必ずリピートします！」</blockquote>
                 <div class="rating">
-                  <svg class="star star-fill">
-                    <use xlink:href="#star-fill"></use>
-                  </svg>
-                  <svg class="star star-fill">
-                    <use xlink:href="#star-fill"></use>
-                  </svg>
-                  <svg class="star star-fill">
-                    <use xlink:href="#star-fill"></use>
-                  </svg>
-                  <svg class="star star-half">
-                    <use xlink:href="#star-half"></use>
-                  </svg>
-                  <svg class="star star-empty">
-                    <use xlink:href="#star-empty"></use>
-                  </svg>
+                  <svg class="star star-fill"><use xlink:href="#star-fill"></use></svg>
+                  <svg class="star star-fill"><use xlink:href="#star-fill"></use></svg>
+                  <svg class="star star-fill"><use xlink:href="#star-fill"></use></svg>
+                  <svg class="star star-half"><use xlink:href="#star-half"></use></svg>
+                  <svg class="star star-empty"><use xlink:href="#star-empty"></use></svg>
                 </div>
                 <div class="author-detail">
                   <div class="name text-dark text-uppercase pt-2">Emma Chamberlin</div>
@@ -508,24 +297,13 @@
             </div>
             <div class="swiper-slide text-center d-flex justify-content-center">
               <div class="review-item col-md-10">
-                <i class="icon icon-review"></i>
-                <blockquote>"Best online shopping experience I've had in years. The website is easy to navigate, checkout was smooth, and I love the daily deals. Highly recommend to everyone!"</blockquote>
+                <blockquote>「ここ数年で最高のオンラインショッピング体験でした。サイトが使いやすく、チェックアウトもスムーズで、毎日のお得な情報も最高です。ぜひおすすめします！」</blockquote>
                 <div class="rating">
-                  <svg class="star star-fill">
-                    <use xlink:href="#star-fill"></use>
-                  </svg>
-                  <svg class="star star-fill">
-                    <use xlink:href="#star-fill"></use>
-                  </svg>
-                  <svg class="star star-fill">
-                    <use xlink:href="#star-fill"></use>
-                  </svg>
-                  <svg class="star star-half">
-                    <use xlink:href="#star-half"></use>
-                  </svg>
-                  <svg class="star star-empty">
-                    <use xlink:href="#star-empty"></use>
-                  </svg>
+                  <svg class="star star-fill"><use xlink:href="#star-fill"></use></svg>
+                  <svg class="star star-fill"><use xlink:href="#star-fill"></use></svg>
+                  <svg class="star star-fill"><use xlink:href="#star-fill"></use></svg>
+                  <svg class="star star-half"><use xlink:href="#star-half"></use></svg>
+                  <svg class="star star-empty"><use xlink:href="#star-empty"></use></svg>
                 </div>
                 <div class="author-detail">
                   <div class="name text-dark text-uppercase pt-2">Jennie Rose</div>
@@ -535,9 +313,7 @@
           </div>
         </div>
         <div class="swiper-icon swiper-arrow swiper-arrow-next position-absolute d-flex align-items-center">
-          <svg class="chevron-right">
-            <use xlink:href="#chevron-right" />
-          </svg>
+          <svg class="chevron-right"><use xlink:href="#chevron-right" /></svg>
         </div>
       </div>
     </div>
@@ -545,22 +321,22 @@
   <div class="swiper-pagination"></div>
 </section>
 
-<!-- Subscribe Section -->
+<!-- メルマガ登録セクション -->
 <section id="subscribe" class="container-grid padding-large position-relative overflow-hidden">
   <div class="container">
     <div class="row">
       <div class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
         <div class="col-md-6 col-sm-12">
           <div class="display-header pe-3">
-            <h2 class="display-7 text-uppercase text-light">Subscribe Us Now</h2>
-            <p>Get latest news, updates and deals directly mailed to your inbox.</p>
+            <h2 class="display-7 text-uppercase text-light">メルマガ登録</h2>
+            <p>最新情報・更新・お得な情報をメールでお届けします。</p>
           </div>
         </div>
         <div class="col-md-5 col-sm-12">
           <form class="subscription-form validate">
             <div class="input-group flex-wrap">
-              <input class="form-control btn-rounded-none" type="email" name="EMAIL" placeholder="Your email address here" required="">
-              <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="subscribe">Subscribe</button>
+              <input class="form-control btn-rounded-none" type="email" name="EMAIL" placeholder="メールアドレスを入力してください" required="">
+              <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="subscribe">登録する</button>
             </div>
           </form>
         </div>
@@ -569,64 +345,24 @@
   </div>
 </section>
 
-<!-- Instagram Section -->
+<!-- Instagramセクション -->
 <section id="instagram" class="padding-large overflow-hidden no-padding-top">
   <div class="container">
     <div class="row">
       <div class="display-header text-uppercase text-dark text-center pb-3">
-        <h2 class="display-7">Shop Our Insta</h2>
+        <h2 class="display-7">インスタをフォロー</h2>
       </div>
       <div class="d-flex flex-wrap">
+        {% for i in "12345" %}
         <figure class="instagram-item pe-2">
           <a href="https://templatesjungle.com/" class="image-link position-relative">
-            <img src="{% static 'products/images/insta-item1.jpg' %}" alt="instagram" class="insta-image">
+            <img src="{% static 'products/images/insta-item'|add:i|add:'.jpg' %}" alt="instagram" class="insta-image">
             <div class="icon-overlay position-absolute d-flex justify-content-center">
-              <svg class="instagram">
-                <use xlink:href="#instagram"></use>
-              </svg>
+              <svg class="instagram"><use xlink:href="#instagram"></use></svg>
             </div>
           </a>
         </figure>
-        <figure class="instagram-item pe-2">
-          <a href="https://templatesjungle.com/" class="image-link position-relative">
-            <img src="{% static 'products/images/insta-item2.jpg' %}" alt="instagram" class="insta-image">
-            <div class="icon-overlay position-absolute d-flex justify-content-center">
-              <svg class="instagram">
-                <use xlink:href="#instagram"></use>
-              </svg>
-            </div>
-          </a>
-        </figure>
-        <figure class="instagram-item pe-2">
-          <a href="https://templatesjungle.com/" class="image-link position-relative">
-            <img src="{% static 'products/images/insta-item3.jpg' %}" alt="instagram" class="insta-image">
-            <div class="icon-overlay position-absolute d-flex justify-content-center">
-              <svg class="instagram">
-                <use xlink:href="#instagram"></use>
-              </svg>
-            </div>
-          </a>
-        </figure>
-        <figure class="instagram-item pe-2">
-          <a href="https://templatesjungle.com/" class="image-link position-relative">
-            <img src="{% static 'products/images/insta-item4.jpg' %}" alt="instagram" class="insta-image">
-            <div class="icon-overlay position-absolute d-flex justify-content-center">
-              <svg class="instagram">
-                <use xlink:href="#instagram"></use>
-              </svg>
-            </div>
-          </a>
-        </figure>
-        <figure class="instagram-item pe-2">
-          <a href="https://templatesjungle.com/" class="image-link position-relative">
-            <img src="{% static 'products/images/insta-item5.jpg' %}" alt="instagram" class="insta-image">
-            <div class="icon-overlay position-absolute d-flex justify-content-center">
-              <svg class="instagram">
-                <use xlink:href="#instagram"></use>
-              </svg>
-            </div>
-          </a>
-        </figure>
+        {% endfor %}
       </div>
     </div>
   </div>

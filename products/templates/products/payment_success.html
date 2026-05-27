@@ -12,27 +12,27 @@
                     </svg>
                 </div>
 
-                <h2 class="display-5 text-uppercase">Payment Successful!</h2>
-                <p class="lead text-muted">Thank you for your purchase, {{ order.full_name }}.</p>
+                <h2 class="display-5">お支払いが完了しました</h2>
+                <p class="lead text-muted">{{ order.full_name }} 様、ご購入ありがとうございます。</p>
                 
                 <div class="card my-5 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title text-uppercase mb-3">Order Details</h5>
+                        <h5 class="card-title text-uppercase mb-3">ご注文内容</h5>
                         <ul class="list-unstyled text-start d-inline-block">
-                            <li><strong>Order ID:</strong> #{{ order.id }}</li>
-                            <li><strong>Amount Paid:</strong> ${{ order.total_amount }}</li>
-                            <li><strong>Status:</strong> <span class="badge bg-success">Paid</span></li>
-                            <li><strong>Date:</strong> {{ order.created_at|date:"F j, Y" }}</li>
+                            <li><strong>注文番号:</strong> #{{ order.id }}</li>
+                            <li><strong>お支払い金額:</strong> ¥{{ order.total_amount }}</li>
+                            <li><strong>ステータス:</strong> <span class="badge bg-success">支払い済み</span></li>
+                            <li><strong>注文日:</strong> {{ order.created_at|date:"Y年m月j日" }}</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a href="{% url 'home' %}" class="btn btn-dark btn-lg px-4 gap-3 text-uppercase">Continue Shopping</a>
+                    <a href="{% url 'home' %}" class="btn btn-dark btn-lg px-4 gap-3">お買い物を続ける</a>
                 </div>
                 
                 <p class="mt-4 text-muted small">
-                    A confirmation email has been sent to <strong>{{ order.email }}</strong>.
+                    確認メールを <strong>{{ order.email }}</strong> 宛に送信いたしました。
                 </p>
             </div>
         </div>

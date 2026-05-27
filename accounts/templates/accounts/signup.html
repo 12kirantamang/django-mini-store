@@ -1,76 +1,126 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規会員登録</title>
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4e65d1 0%, #904e95 100%);
+            --text-dark: #333;
+            --text-muted: #666;
+            --border-color: #e5e7eb;
+        }
+
         body {
-            /* Gradient background matching your image */
-            background: linear-gradient(135deg, #4e65d1 0%, #904e95 100%);
+            background-color: #ffffff; /* Pure white background */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            color: var(--text-dark);
         }
+
         .register-card {
-            background: white;
+            background: #ffffff;
             padding: 40px;
-            border-radius: 10px;
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            /* Subtle shadow to keep it clean on white */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
         }
-        h2 { border-bottom: 1px solid #eee; padding-bottom: 20px; margin-top: 0; }
-        .input-group { margin: 25px 0; border-bottom: 2px solid #ccc; }
+
+        h2 { 
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .input-group { 
+            margin-bottom: 20px; 
+            text-align: left;
+        }
+
         input {
             width: 100%;
-            border: none;
-            padding: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            border-radius: 8px;
             outline: none;
-            font-size: 16px;
-            color: #333;
+            font-size: 15px;
+            transition: border-color 0.2s;
+            background-color: #f9fafb;
         }
-        ::placeholder { color: #aaa; }
+
+        input:focus {
+            border-color: #4e65d1;
+            background-color: #fff;
+        }
+
         .signup-btn {
             width: 100%;
-            padding: 15px;
-            border-radius: 30px;
-            border: 2px solid #333;
-            background: #eee;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            background: var(--primary-gradient);
+            color: white;
             font-weight: bold;
+            font-size: 16px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 10px;
+            transition: opacity 0.2s;
         }
+
         .signup-btn:hover {
-            background: #ddd;
+            opacity: 0.9;
         }
-        .footer-link { margin-top: 20px; font-size: 14px; color: #666; }
-        .footer-link a { color: #4e65d1; text-decoration: none; }
+
+        .footer-link { 
+            margin-top: 25px; 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+
+        .footer-link a { 
+            color: #4e65d1; 
+            text-decoration: none; 
+            font-weight: 600;
+        }
+
+        .footer-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Alerts */
         .alert {
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            font-size: 14px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            text-align: left;
         }
-        .alert-error {
-            background-color: #fee;
-            color: #c33;
-            border: 1px solid #fcc;
-        }
-        .alert-success {
-            background-color: #efe;
-            color: #3c3;
-            border: 1px solid #cfc;
-        }
+        .alert-error { background-color: #fef2f2; color: #991b1b; border: 1px solid #fee2e2; }
+        .alert-success { background-color: #f0fdf4; color: #166534; border: 1px solid #dcfce7; }
     </style>
 </head>
 <body>
     <div class="register-card">
-        <h2>Register</h2>
+        <h2>新規会員登録</h2>
+        <p class="subtitle">必要事項を入力してください</p>
         
         {% if messages %}
             {% for message in messages %}
@@ -83,20 +133,26 @@
         <form method="POST">
             {% csrf_token %}
             
-            <!-- ADD THIS: Hidden input for redirect after signup -->
             <input type="hidden" name="next" value="{{ request.GET.next|default:'' }}">
             
-            <div class="input-group"><input type="text" name="username" placeholder="Username" required></div>
-            <div class="input-group"><input type="email" name="email" placeholder="Email" required></div>
-            <div class="input-group"><input type="password" name="password" placeholder="Password" required></div>
-            <div class="input-group"><input type="password" name="confirm_password" placeholder="Confirm Password" required></div>
+            <div class="input-group">
+                <input type="text" name="username" placeholder="ユーザー名" required autofocus>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="メールアドレス" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="パスワード" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="confirm_password" placeholder="パスワード（確認用）" required>
+            </div>
             
-            <button type="submit" class="signup-btn">Sign Up</button>
+            <button type="submit" class="signup-btn">アカウントを作成する</button>
         </form>
         
-        <!-- UPDATE THIS: Pass next parameter to login link -->
-        <p class="footer-link">Have an Account? 
-            <a href="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">Login Here</a>
+        <p class="footer-link">すでにアカウントをお持ちですか？ 
+            <a href="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">ログインはこちら</a>
         </p>
     </div>
 </body>
